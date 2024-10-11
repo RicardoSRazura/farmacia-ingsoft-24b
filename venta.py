@@ -71,7 +71,7 @@ class Venta(tk.Toplevel):
         self.cliente_frame = tk.LabelFrame(self, text='Cliente')
         self.cliente_frame.grid(row=0, column=6, rowspan=8, padx=10, pady=5, sticky='nsew')
         
-        tk.Label(self.cliente_frame, text='Nombre del Cliente:').grid(row=0, column=0, padx=5, pady=5)
+        tk.Label(self.cliente_frame, text='Codigo del cliente:').grid(row=0, column=0, padx=5, pady=5)
         self.nombre_cliente_entry = tk.Entry(self.cliente_frame)
         self.nombre_cliente_entry.grid(row=0, column=1, padx=5, pady=5)
         
