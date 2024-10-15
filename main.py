@@ -21,7 +21,7 @@ class PuntoDeVentaApp(tk.Tk):
         archivo_menu.add_command(label="Compra", command=self.open_compra)
         archivo_menu.add_command(label="Gestión de Proveedores", command=self.open_proveedor_crud)
         archivo_menu.add_command(label="Almacén", command=self.open_almacen)
-        archivo_menu.add_command(label="Carrito", command=self.open_carrito)
+        # archivo_menu.add_command(label="Carrito", command=self.open_carrito)
         archivo_menu.add_separator()
         archivo_menu.add_command(label="Salir", command=self.quit)
         menubar.add_cascade(label="Archivo", menu=archivo_menu)
@@ -38,8 +38,8 @@ class PuntoDeVentaApp(tk.Tk):
     def open_almacen(self):
         almacen_window = Almacen(self)
     
-    def open_carrito(self):
-        carrito_window = Carrito(self)
+    # def open_carrito(self):
+    #     carrito_window = Carrito(self)
 
 if __name__ == '__main__':
     app = PuntoDeVentaApp()
