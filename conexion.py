@@ -5,7 +5,7 @@ class conexion:
     def __init__(self):
         self.user = "root"
         self.password = ""
-        self.database = ""
+        self.database = "farmaciadb"
         self.host = "localhost"
         self.conn = None
 
