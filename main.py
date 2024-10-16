@@ -1,9 +1,9 @@
 import tkinter as tk
-from venta import Venta
-from carrito import Carrito
-from compra import Compra
-from proveedor_crud import ProveedorCRUD
-from almacen import Almacen
+from interfaces.venta import Venta
+from interfaces.carrito import Carrito
+from interfaces.compra import Compra
+from interfaces.proveedor_crud import ProveedorCRUD
+from interfaces.almacen import Almacen
 
 
 class PuntoDeVentaApp(tk.Tk):
