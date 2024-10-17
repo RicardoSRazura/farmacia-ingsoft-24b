@@ -12,13 +12,13 @@ class conexion:
     def open(self):
         try:
             self.conn = mysql.connector.connect(
-                host=self.host, 
-                user=self.user, 
-                passwd=self.password, 
+                host=self.host,
+                user=self.user,
+                passwd=self.password,
                 database=self.database
             )
             if self.conn.is_connected():
-                print("Conexión exitosa a la base de datos")
+                print("Conexion exitosa a la base de datos")
             return self.conn
         except mysql.connector.Error as err:
             print(f"Error al conectar con la base de datos: {err}")
@@ -27,4 +27,4 @@ class conexion:
     def close(self):
         if self.conn and self.conn.is_connected():
             self.conn.close()
-            print("Conexión cerrada")
+            print("Conexion cerrada")
