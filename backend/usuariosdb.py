@@ -94,13 +94,13 @@ class dbUsuario:
             print(f"Error al autenticar el usuario: {err}")
             return None
     
-    def exists(self, nombre):
+    def exists(self, correo):
         try:
             self.con = con.conexion()
             self.conn = self.con.open()
             self.cursor = self.conn.cursor(buffered=True)
-            self.sql = "SELECT COUNT(*) FROM usuarios WHERE nombre = %s"
-            self.cursor.execute(self.sql, (nombre,))
+            self.sql = "SELECT COUNT(*) FROM usuarios WHERE correo = %s"
+            self.cursor.execute(self.sql, (correo,))
             result = self.cursor.fetchone()
             self.con.close()
             return result[0] > 0

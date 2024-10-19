@@ -1,5 +1,10 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
+from backend.usuariosdb import dbUsuario
+from utils.usuariosGS import Usuario
+from mysql.connector import Error
+import re
+
 
 class Registro(tk.Toplevel):
     def __init__(self, parent):
@@ -48,6 +53,51 @@ class Registro(tk.Toplevel):
         
         self.btnRegistrar = tk.Button(self.frameBotones, text='Registrar')
         self.btnRegistrar.grid(row=1, column=1, padx=10, pady=10, sticky='E')
+
+        def register(self):
+            nombre = self.txNombre.get().strip()
+            correo = self.txCorreo.get().strip()
+            contraseña = self.txCorreo.get().strip()
+            rol = self.cbRol.get()
+            
+            #validacion de Campos vacios
+            if nombre == "" or correo == "" or contraseña == "" or rol == "":
+                messagebox.showerror("Error", "Todos los campos son obligatorios")
+                return
+            
+            #validacion de longitud de la contrasena
+            if len(contraseña) < 5:
+                messagebox.showerror("Error", "La contraseña debe tener al menos 5 caracteres")
+                return
+            
+            #Validacion de entrada de correo
+
+            #validacion de perfil
+            rolesValidos = ['administrador', 'gerente', 'cajero']
+            if rol.lower() not in rolesValidos:
+                messagebox.showerror("Error", "Perfil invalido. Debe ser 'administrador, gerente o cajero'")
+                return
+            
+            try:
+                db_usuario = dbUsuario()
+                if db_usuario.exists(correo):
+                    messagebox.showerror("Error", "El correo ya esta en uso")
+                    return
+                
+                usuario = Usuario()
+                usuario.setNombre(nombre)
+                usuario.setCorreo(correo)
+                usuario.setContraseña(contraseña)
+                usuario.setRol(rol.lower())
+
+                db_usuario.save(usuario)
+
+                messagebox.showinfo("Exito", "Usuario registrado exitosamente")
+                self.destroy()
+                # self.login_window.deiconify()
+            except Error as err:
+                messagebox.showerror("Error", f"Error al conectar con la base de datos {err}")
+
 
 
 
