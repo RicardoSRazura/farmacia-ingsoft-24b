@@ -1,15 +1,15 @@
 class Usuario:
-    def __init__(self, usuario_id=None, nombre="", correo="", contraseña="",rol=""):
-        self.usuario_id = usuario_id
+    def __init__(self, id_usuario=None, nombre="", correo="", contraseña="",rol=""):
+        self.id_usuario = id_usuario
         self.nombre = nombre
         self.correo = correo
         self.contraseña = contraseña
         self.rol = rol
 
-        def getUsuario_id(self):
+        def getId_usuario(self):
             return self.usuario_id
         
-        def setUsuario_id(self, usuario_id):
+        def setId_usuario(self, usuario_id):
             self.usuario_id = usuario_id
 
         def getNombre(self):
