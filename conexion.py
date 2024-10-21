@@ -4,7 +4,7 @@ from mysql.connector import Error
 class conexion:
     def __init__(self):
         self.user = "root"
-        self.password = "root"
+        self.password = ""
         self.database = "farmaciadb"
         self.host = "localhost"
         self.conn = None

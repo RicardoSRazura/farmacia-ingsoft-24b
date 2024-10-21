@@ -37,7 +37,7 @@ class Login(tk.Tk):
         self.frameBotones = tk.Frame(self)
         self.frameBotones.grid(row=2, column=1, padx=10, pady=10)
 
-        self.btnLogin = tk.Button(self.frameBotones, text='Login', command=self.abrirPantallaPrincipal)
+        self.btnLogin = tk.Button(self.frameBotones, text='Login', command=self.login)
         self.btnLogin.grid(row=1, column=0, padx=10, pady=10, sticky='W')
         
         self.btnRegistrar = tk.Button(self.frameBotones, text='Registrar', command=self.abrirRegistro)
@@ -53,6 +53,9 @@ class Login(tk.Tk):
             return
         
         #Validacion de formato valido de correo
+        if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", correo):
+            messagebox.showerror("Error", "El formato del correo es inválido. Debe ser del tipo usuario@dominio.com")
+            return False
 
         #Validacion de longitud minima de la contrasena
         if len(contraseña) < 5:

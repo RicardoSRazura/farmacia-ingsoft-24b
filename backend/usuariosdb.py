@@ -14,7 +14,7 @@ class dbUsuario:
             self.sql = "INSERT INTO usuarios (nombre, correo, contraseña, rol) VALUES (%s, %s, %s, %s)"
             self.datos = (usuario.getNombre(), usuario.getCorreo(), usuario.getContraseña(), usuario.getRol())
             self.cursor.execute(self.sql, self.datos)
-            self.con.commit()
+            self.conn.commit()
             print("Datos insertados correctamente")
             self.con.close()
         except mysql.connector.Error as err:
